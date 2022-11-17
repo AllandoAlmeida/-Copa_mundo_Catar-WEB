@@ -21,11 +21,18 @@ export const Signup = () => {
                 method: 'post',
                 baseURL: import.meta.env.VITE_API_URL,
                 url: '/users',
-                data: values
-
+                data: values,
+                auth: {
+                    username: values.email,
+                    password: values.password
+                }
             })
             
             console.log(res.data)
+
+            const auth = localStorage.getItem('auth')
+            console.log(res.data)
+            console.log(JSON.parse(auth))
         },
         initialValues: {
             name: '',
